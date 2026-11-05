@@ -1,0 +1,122 @@
+Git Commands Used - SDP Assignment (Git & GitHub Workflow)
+Name: Nanakjot Singh Chahal
+Student ID: 2024eb02260
+Repository: https://github.com/piroBeastie/sdp-git-assignment
+
+All commands were run in Git Bash on Windows, inside the project folder
+sdp-git-assignment.
+
+
+Step 1 - Local Repository Setup
+-------------------------------
+git init -b main
+    Creates a new empty Git repository (.git folder) in the current folder
+    and names the first branch "main".
+
+git status
+    Shows the current branch and which files are untracked, modified or
+    staged. I used it many times to check the state of the repo.
+
+
+Step 2 - Git Workflow
+---------------------
+git add index.html about.html
+    Adds the two HTML files to the staging area so they go into the next
+    commit.
+
+git commit -m "Initial commit: add index.html and about.html"
+    Saves the staged files as the first commit (initial state of the
+    project). -m gives the commit message.
+
+git add about.html
+git commit -m "Update about.html with course details and home link"
+    Stages the modified about.html and saves it as the second commit.
+
+git branch feature
+    Creates a new branch called "feature" from the current commit.
+
+git branch
+    Lists all local branches. The * shows the branch I am on.
+
+git checkout feature
+    Switches to the feature branch.
+
+git add index.html
+git commit -m "Add navigation menu to index.html"
+    Stages and commits the change made to index.html on the feature
+    branch only.
+
+git checkout main
+    Switches back to the main branch.
+
+git merge --no-ff feature -m "Merge feature branch into main"
+    Merges the feature branch into main. --no-ff makes Git create a merge
+    commit, so the branch is clearly visible in the history.
+
+git log --oneline --graph --all
+    Shows the commit history of all branches in short form, with a graph
+    of the branch and merge.
+
+git log
+    Shows the full commit history with commit id, author, date and
+    message.
+
+
+Step 3 - .gitignore
+-------------------
+git add .gitignore
+git commit -m "Add .gitignore to ignore log files and temp folder"
+    Stages and commits the .gitignore file. It has *.log (ignore all .log
+    files) and temp/ (ignore the temp folder).
+
+
+Step 4 - Undo Operation
+-----------------------
+git add contact.html
+git commit -m "Add contact.html page"
+    Makes an extra commit that adds contact.html (this is the commit that
+    is undone next).
+
+git log --oneline
+    Shows the history in one line per commit, used to check the repo
+    before and after the undo.
+
+git revert HEAD --no-edit
+    Undoes the last commit by creating a new commit that does the
+    opposite (contact.html is removed). History is not deleted, so it is
+    safe for a repo that is pushed to GitHub. --no-edit uses the default
+    message.
+
+
+Step 5 - GitHub Integration
+---------------------------
+gh repo create sdp-git-assignment --public --description "SDP assignment - Git and GitHub workflow"
+    (GitHub CLI) Creates a new empty public repository on my GitHub
+    account.
+
+git remote add origin git@github.com:piroBeastie/sdp-git-assignment.git
+    Connects the local repo to the GitHub repo and names the remote
+    "origin".
+
+git remote -v
+    Shows the remote URLs to check the connection.
+
+git push -u origin main
+    Pushes the main branch with all its commits to GitHub. -u sets
+    origin/main as the upstream so later just "git push" works.
+
+git push -u origin feature
+    Pushes the feature branch to GitHub as well.
+
+git branch -a
+    Lists local and remote branches.
+
+
+Step 6 - Command Documentation File
+-----------------------------------
+git add git_commands.txt
+git commit -m "Add git_commands.txt with all commands used"
+    Stages and commits this file.
+
+git push
+    Pushes the new commit to GitHub (upstream is already set).
