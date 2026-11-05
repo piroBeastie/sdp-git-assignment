@@ -3,120 +3,116 @@ Name: Nanakjot Singh Chahal
 Student ID: 2024eb02260
 Repository: https://github.com/piroBeastie/sdp-git-assignment
 
-All commands were run in Git Bash on Windows, inside the project folder
-sdp-git-assignment.
+I ran all of these in Git Bash on my Windows laptop, from inside the
+sdp-git-assignment folder. Under each command is a short note on what it
+did in this project.
 
 
 Step 1 - Local Repository Setup
 -------------------------------
 git init -b main
-    Creates a new empty Git repository (.git folder) in the current folder
-    and names the first branch "main".
+    Turned my project folder into a Git repo (makes the hidden .git folder).
+    -b main names the first branch main instead of master.
 
 git status
-    Shows the current branch and which files are untracked, modified or
-    staged. I used it many times to check the state of the repo.
+    Tells me the current branch and what is untracked, changed or staged.
+    I kept running it between steps to check before committing.
 
 
 Step 2 - Git Workflow
 ---------------------
 git add index.html about.html
-    Adds the two HTML files to the staging area so they go into the next
-    commit.
+    Put both HTML files in the staging area so the first commit picks
+    them up.
 
 git commit -m "Initial commit: add index.html and about.html"
-    Saves the staged files as the first commit (initial state of the
-    project). -m gives the commit message.
+    Saved the starting version of the project as commit no. 1. The text
+    after -m is the commit message.
 
 git add about.html
 git commit -m "Update about.html with course details and home link"
-    Stages the modified about.html and saves it as the second commit.
+    After editing about.html I staged it again and made commit no. 2.
 
 git branch feature
-    Creates a new branch called "feature" from the current commit.
+    Made a new branch called feature, starting from the commit I was on.
 
 git branch
-    Lists all local branches. The * shows the branch I am on.
+    Prints the local branches. The one with * is the one I am on.
 
 git checkout feature
-    Switches to the feature branch.
+    Moved me from main to feature, so my next commit goes on feature.
 
 git add index.html
 git commit -m "Add navigation menu to index.html"
-    Stages and commits the change made to index.html on the feature
-    branch only.
+    Committed the new nav menu in index.html. At this point only feature
+    has this commit, main does not.
 
 git checkout main
-    Switches back to the main branch.
+    Took me back to main (index.html goes back to the version without
+    the menu).
 
 git merge --no-ff feature -m "Merge feature branch into main"
-    Merges the feature branch into main. --no-ff makes Git create a merge
-    commit, so the branch is clearly visible in the history.
+    Brought the feature commit into main. --no-ff forces a merge commit,
+    so the branch stays visible in the log graph.
 
 git log --oneline --graph --all
-    Shows the commit history of all branches in short form, with a graph
-    of the branch and merge.
+    Short history of every branch, one commit per line, with lines that
+    show where feature split off and joined back.
 
 git log
-    Shows the full commit history with commit id, author, date and
-    message.
+    Long form of the history: full commit id, author, date and message.
 
 
 Step 3 - .gitignore
 -------------------
 git add .gitignore
 git commit -m "Add .gitignore to ignore log files and temp folder"
-    Stages and commits the .gitignore file. It has *.log (ignore all .log
-    files) and temp/ (ignore the temp folder).
+    Committed the .gitignore file. Its two rules are *.log (any log file)
+    and temp/ (the whole temp folder), so Git skips both.
 
 
 Step 4 - Undo Operation
 -----------------------
 git add contact.html
 git commit -m "Add contact.html page"
-    Makes an extra commit that adds contact.html (this is the commit that
-    is undone next).
+    Extra commit that adds contact.html, made so there is something to undo.
 
 git log --oneline
-    Shows the history in one line per commit, used to check the repo
-    before and after the undo.
+    One line per commit. I ran it before and after the undo to compare.
 
 git revert HEAD --no-edit
-    Undoes the last commit by creating a new commit that does the
-    opposite (contact.html is removed). History is not deleted, so it is
-    safe for a repo that is pushed to GitHub. --no-edit uses the default
-    message.
+    Undid my last commit by adding a new commit that removes contact.html.
+    Old history stays, which matters once the repo is on GitHub. --no-edit
+    keeps Git's default message so no editor opens.
 
 
 Step 5 - GitHub Integration
 ---------------------------
 gh repo create sdp-git-assignment --public --description "SDP assignment - Git and GitHub workflow"
-    (GitHub CLI) Creates a new empty public repository on my GitHub
-    account.
+    This one is the GitHub CLI, not git. It made the empty public repo on
+    my GitHub account.
 
 git remote add origin git@github.com:piroBeastie/sdp-git-assignment.git
-    Connects the local repo to the GitHub repo and names the remote
-    "origin".
+    Linked my local repo to the GitHub repo under the short name origin.
 
 git remote -v
-    Shows the remote URLs to check the connection.
+    Shows the fetch and push URL of origin, to confirm the link worked.
 
 git push -u origin main
-    Pushes the main branch with all its commits to GitHub. -u sets
-    origin/main as the upstream so later just "git push" works.
+    Uploaded main with all its commits. -u saves origin/main as upstream,
+    so after this a plain "git push" is enough.
 
 git push -u origin feature
-    Pushes the feature branch to GitHub as well.
+    Uploaded the feature branch too, so it also shows on GitHub.
 
 git branch -a
-    Lists local and remote branches.
+    Lists my local branches plus the remote ones (remotes/origin/...).
 
 
 Step 6 - Command Documentation File
 -----------------------------------
 git add git_commands.txt
 git commit -m "Add git_commands.txt with all commands used"
-    Stages and commits this file.
-
 git push
-    Pushes the new commit to GitHub (upstream is already set).
+    Staged and committed this file and pushed it to GitHub. I used the same
+    three commands again after rewording some of the notes in this file.
